@@ -1,0 +1,94 @@
+<%- include('../partials/head')-%>
+<%- include('../partials/nav')-%>
+<%- include('../partials/sidebar')-%>
+
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Messages</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Messages</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div id="status" data-status="<%= status %>"></div>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>isRead</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% if(contacts){ %>
+                        <% contacts.forEach(function(conatct,i){ %>
+                            <tr id="delete-<%= conatct._id %>">
+                                <td width="10"><b><%= i+1 %></b></td>
+                                <td><%= conatct.name %></td>
+                                <td><%= conatct.email %></td>
+                                <td><%= conatct.phone %></td>
+                                <td width="10"><span>
+                                  <% if(conatct.isRead){ %> <i class="fa fa-envelope-open text-warning"></i><% }else{ %><i class="fa fa-envelope text-info"></i><% } %></span></td>
+                                <td width="10">
+                                    <div class="btn-group">
+                                        <a href="/admin/contacts/<%= conatct._id %>" title="Show" type="button" class="btn btn-default text-dark"><i class="fa fa-eye"></i></a>
+                                        <a href="javascript:;" data-id="<%= conatct._id %>" title="Delete" type="button" class="btn btn-default text-danger deleteBtn"><i class="fa fa-trash"></i></a>
+                                      </div>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else{ %>
+                        <tr>
+                            <td colspan="5" class="text-center">No Data</td>
+                        </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<%- include('../partials/footer')-%>
+<script>
+  $(()=>{
+      $('.deleteBtn').on('click',function(){
+          const id = $(this).data('id');
+          removeRow(id,'/admin/contacts/');
+      });  
+      let status = $('#status').data('status');
+      checkStatus(status);
+  });
+</script>

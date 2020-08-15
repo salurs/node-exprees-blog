@@ -1,0 +1,104 @@
+<%- include('../partials/head')-%>
+<%- include('../partials/nav')-%>
+<%- include('../partials/sidebar')-%>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">User</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+              <li class="breadcrumb-item active">Edit</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card card-olive card-outline">
+              <div class="card-body">
+                <form role="form" action="/admin/users/<%= user._id %>?_method=PUT" method="post">
+                  <input type="hidden" name="_method" value="put">
+                  <div class="card-body">
+
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control<%- validator.name != '' ? ' border-danger' : '' %>" name="name" id="name" value="<%= user.name %>" placeholder="Name">
+                      <% if(validator.name != ''){ %>
+                        <span class="text-danger"><%= validator.name %></span>
+                      <% } %>
+                    </div>
+                    <div class="form-group">
+                      <label for="surname">Surname</label>
+                      <input type="text" class="form-control<%- validator.surname != '' ? ' border-danger' : '' %>" name="surname" id="surname" value="<%= user.surname %>" placeholder="Surname">
+                      <% if(validator.surname != ''){ %>
+                        <span class="text-danger"><%= validator.surname %></span>
+                      <% } %>
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control<%- validator.username != '' ? ' border-danger' : '' %>" name="username" id="username" value="<%= user.username %>" placeholder="Username">
+                      <% if(validator.username != ''){ %>
+                        <span class="text-danger"><%= validator.username %></span>
+                      <% } %>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control<%- validator.email != '' ? ' border-danger' : '' %>" name="email" id="email" value="<%= user.email %>" placeholder="Email">
+                      <% if(validator.mail != ''){ %>
+                        <span class="text-danger"><%= validator.mail %></span>
+                      <% } %>
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" class="form-control<%- validator.password != '' ? ' border-danger' : '' %>" name="password" id="password" placeholder="Password">
+                      <% if(validator.password != ''){ %>
+                        <span class="text-danger"><%= validator.password %></span>
+                      <% } %>
+                    </div>
+                    <div class="form-group">
+                      <label for="confirmPassword">Confirm Password</label>
+                      <input type="password" class="form-control<%- validator.confirmPassword != '' ? ' border-danger' : '' %>" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+                      <% if(validator.confirmPassword != ''){ %>
+                        <span class="text-danger"><%= validator.confirmPassword %></span>
+                      <% } %>
+                    </div>
+                    <div class="form-group">
+                      <label for="role">Role</label>
+                      <select name="role" id="role" class="form-control<%- validator.role != '' ? ' border-danger' : '' %>">
+                        <option disabled>Select Role</option>
+                        <option value="1" <% if(user.role == 1){ %> selected <% } %> >Role 1</option>
+                        <option value="2" <% if(user.role == 2){ %> selected <% } %> >Role 2</option>
+                        <option value="3" <% if(user.role == 3){ %> selected <% } %> >Role 3</option>
+                        <option value="4" <% if(user.role == 4){ %> selected <% } %> >Role 4</option>
+                      </select>
+                      <% if(validator.role != ''){ %>
+                        <span class="text-danger"><%= validator.role %></span>
+                      <% } %>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn bg-olive">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include('../partials/footer')-%>
+ 

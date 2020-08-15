@@ -1,0 +1,123 @@
+<%- include('../partials/head')-%>
+<%- include('../partials/nav')-%>
+<%- include('../partials/sidebar')-%>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Blog</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+              <li class="breadcrumb-item"><a href="/admin/blogs">Blogs</a></li>
+              <li class="breadcrumb-item active">Edit</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card card-olive card-outline">
+              <div class="card-body">
+                
+                <!-- <form role="form" action="/admin/blogs" method="post" enctype="application/x-www-form-urlencoded"> -->
+                <form role="form" action="/admin/blogs/<%= blog._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="_method" value="put">
+                  <div class="card-body">
+
+                    <div class="form-group">
+                      <label for="title">Title</label>
+                      <input type="text" class="form-control<%- validator.title != '' ? ' border-danger' : '' %>" name="title" id="title" value="<%= blog.title %>" placeholder="Title">
+                       <% if(validator.title != ''){ %>
+                        <span class="text-danger"><%= validator.title %></span>
+                      <% } %>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="subtitle">Subtitle</label>
+                      <input type="text" class="form-control<%- validator.subtitle != '' ? ' border-danger' : '' %>" name="subtitle" id="subtitle" value="<%= blog.subtitle %>" placeholder="Subtitle">
+                       <% if(validator.subtitle != ''){ %>
+                        <span class="text-danger"><%= validator.subtitle %></span>
+                      <% } %>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="body">Content</label>
+                      <textarea name="body" id="body" cols="30" rows="10" class="form-control<%- validator.body != '' ? ' border-danger' : '' %>" placeholder="Content"> <%= blog.body %></textarea>
+                       <% if(validator.body != ''){ %>
+                        <span class="text-danger"><%= validator.body %></span>
+                      <% } %>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="author">Author</label>
+                      <input type="text" class="form-control<%- validator.author != '' ? ' border-danger' : '' %>" name="author" id="author" value="<%= blog.author %>" placeholder="Author">
+                       <% if(validator.author != ''){ %>
+                        <span class="text-danger"><%= validator.author %></span>
+                      <% } %>
+                    </div>
+
+                    <% if(blog.image){ %>
+                      <div class="form-group">
+                        <label>Current Image</label>
+                        <div class="input-group">
+                          <img style="width: 150px;" src="/uploads/<%= blog.image %>" alt="">
+                        </div>
+                      </div>
+                    <% } %>
+                    <div class="form-group">
+                      <label for="image">Image</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="image" id="image">
+                          <label class="custom-file-label<%- validator.image != '' ? ' border-danger' : '' %>" for="image">Choose file</label>
+                        </div>
+                      </div>
+                       <% if(validator.image != ''){ %>
+                        <span class="text-danger"><%= validator.image %></span>
+                      <% } %>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="description">Description</label>
+                      <input type="text" class="form-control<%- validator.description != '' ? ' border-danger' : '' %>" name="description" id="description" value="<%= blog.description %>" placeholder="Description">
+                       <% if(validator.description != ''){ %>
+                        <span class="text-danger"><%= validator.description %></span>
+                      <% } %>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="keywords">Keywords</label>
+                      <input type="text" class="form-control<%- validator.keywords != '' ? ' border-danger' : '' %>" name="keywords" id="keywords" value="<%= blog.keywords %>" placeholder="Keywords">
+                       <% if(validator.keywords != ''){ %>
+                        <span class="text-danger"><%= validator.keywords %></span>
+                      <% } %>
+                    </div>
+
+                  </div>
+                  <!-- /.card-body -->
+  
+                  <div class="text-center">
+                    <button type="submit" class="btn bg-olive">Submit</button>
+                  </div>
+                </form>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include('../partials/footer')-%>
+ 

@@ -1,0 +1,60 @@
+ <!-- Main Footer -->
+ <footer class="main-footer text-right">
+    <!-- Default to the left -->
+    <small>Copyright &copy; 2020 <a class="text-olive" href="/">theBestBlog</a>. All rights reserved.</small>
+  </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/admin/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- Alertify -->
+<script src="/admin/plugins/alertify/alertify.min.js"></script>
+<!-- Summernote -->
+<script src="/admin/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/admin/dist/js/adminlte.min.js"></script>
+<!-- <script src="/admin/custom/main.js"></script> -->
+<script src="/admin/bundle/main.js"></script>
+<script>
+  function removeRow(id,url, data = null){
+    alertify.confirm('Are you sure?','It will be permanently deleted.', ()=>{
+        $.ajax({
+            url: url + id,
+            type: 'delete',
+            data: data,
+            success: (res)=>{
+                if(res.status === 'success'){
+                    $('#delete-'+id).remove();
+                    alertify.success('Successfully');
+                }
+            },
+            error: ()=>{
+                alertify.error("Error");
+            }
+        });
+    },()=>{
+        alertify.error("Canceled");
+    });
+};
+function checkStatus(status){
+    if (status) {
+        if(status === 'success')
+            alertify.success('Successfully');
+        else
+            alertify.error('Error');
+    }
+};
+
+</script>
+</body>
+</html>

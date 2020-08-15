@@ -1,0 +1,31 @@
+@BASE_URL = http://localhost:3000
+
+###
+GET {{BASE_URL}}/settings
+Content-Type: application/json
+###
+
+POST {{BASE_URL}}/admin/settings/store
+Content-Type: application/json
+
+{
+    "key": "copyright",
+    "value": "Copyright © thebestblog.com 2020",
+    "type": "input"
+}
+###
+GET {{BASE_URL}}/admin/blog
+Content-Type: application/json
+###
+POST {{BASE_URL}}/admin/blogs
+Content-Type: application/json
+
+{
+    "title": "Lorem Ipsum 07",
+    "subtitle": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+    "description": "Man must explore, and this is exploration at its greatest",
+    "keywords": "Man must explore, and this is exploration at its greatest",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor, est at molestie hendrerit, velit mauris suscipit lorem, id sollicitudin velit tellus et tortor. Praesent efficitur, urna in finibus porttitor, lacus lectus ultricies leo, eu ultrices elit velit id neque. Maecenas ut porta orci. Vestibulum eu orci id erat faucibus volutpat. Vestibulum tortor est, elementum eget condimentum et, porttitor et leo. Ut pharetra placerat ipsum, non finibus urna consectetur et. Proin sed maximus risus. Nam ac ipsum porta, rhoncus turpis vel, fermentum nulla. Phasellus congue diam non tristique posuere. Praesent finibus accumsan purus et fermentum. Donec egestas feugiat massa ac mollis. In elit odio, gravida ac lorem in, faucibus sodales eros. Vestibulum consequat ante porta ullamcorper suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor, est at molestie hendrerit, velit mauris suscipit lorem, id sollicitudin velit tellus et tortor. Praesent efficitur, urna in finibus porttitor, lacus lectus ultricies leo, eu ultrices elit velit id neque. Maecenas ut porta orci. Vestibulum eu orci id erat faucibus volutpat. Vestibulum tortor est, elementum eget condimentum et, porttitor et leo. Ut pharetra placerat ipsum, non finibus urna consectetur et. Proin sed maximus risus. Nam ac ipsum porta, rhoncus turpis vel, fermentum nulla. Phasellus congue diam non tristique posuere. Praesent finibus accumsan purus et fermentum. Donec egestas feugiat massa ac mollis. In elit odio, gravida ac lorem in, faucibus sodales eros. Vestibulum consequat ante porta ullamcorper suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor, est at molestie hendrerit, velit mauris suscipit lorem, id sollicitudin velit tellus et tortor. Praesent efficitur, urna in finibus porttitor, lacus lectus ultricies leo, eu ultrices elit velit id neque. Maecenas ut porta orci. Vestibulum eu orci id erat faucibus volutpat. Vestibulum tortor est, elementum eget condimentum et, porttitor et leo. Ut pharetra placerat ipsum, non finibus urna consectetur et. Proin sed maximus risus. Nam ac ipsum porta, rhoncus turpis vel, fermentum nulla. Phasellus congue diam non tristique posuere. Praesent finibus accumsan purus et fermentum. Donec egestas feugiat massa ac mollis. In elit odio, gravida ac lorem in, faucibus sodales eros. Vestibulum consequat ante porta ullamcorper suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tempor, est at molestie hendrerit, velit mauris suscipit lorem, id sollicitudin velit tellus et tortor. Praesent efficitur, urna in finibus porttitor, lacus lectus ultricies leo, eu ultrices elit velit id neque. Maecenas ut porta orci. Vestibulum eu orci id erat faucibus volutpat. Vestibulum tortor est, elementum eget condimentum et, porttitor et leo. Ut pharetra placerat ipsum, non finibus urna consectetur et. Proin sed maximus risus. Nam ac ipsum porta, rhoncus turpis vel, fermentum nulla. Phasellus congue diam non tristique posuere. Praesent finibus accumsan purus et fermentum. Donec egestas feugiat massa ac mollis. In elit odio, gravida ac lorem in, faucibus sodales eros. Vestibulum consequat ante porta ullamcorper suscipit. ",
+    "image": "image",
+    "author": "Orhan"
+}

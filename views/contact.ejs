@@ -1,0 +1,74 @@
+<%- include('./partials/head')-%>
+<script src="https://www.google.com/recaptcha/api.js?render=<%= SITE_KEY %>"></script>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>Contact Me</h1>
+            <span class="subheading">Have questions? I have answers.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <% if(status != ''){ %>
+          <p class="help-block text-success"><%= status %></p>
+        <% }%>
+        <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
+        <form action="/contact" method="POST">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Name" id="name" name="name" value="<%= old.name %>" required>
+              <% if(validator.name != ''){ %>
+                <p class="help-block text-danger"><%= validator.name %></p>
+              <% } %>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Email Address</label>
+              <input type="email" class="form-control" placeholder="Email Address" id="email" name="email" value="<%= old.email %>" required>
+              <% if(validator.email != ''){ %>
+                <p class="help-block text-danger"><%= validator.email %></p>
+              <% } %>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Phone Number</label>
+              <input type="tel" class="form-control" placeholder="Phone Number" id="phone" name="phone" value="<%= old.phone %>" required>
+              <% if(validator.phone != ''){ %>
+                <p class="help-block text-danger"><%= validator.phone %></p>
+              <% } %>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Message</label>
+              <textarea rows="5" class="form-control" placeholder="Message" id="message" name="message" required><%= old.message %></textarea>
+              <% if(validator.message != ''){ %>
+                <p class="help-block text-danger"><%= validator.message %></p>
+              <% } %>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  
+<%- include('./partials/footer')-%>

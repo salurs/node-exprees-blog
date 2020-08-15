@@ -1,0 +1,99 @@
+<%- include('../partials/head')-%>
+<%- include('../partials/nav')-%>
+<%- include('../partials/sidebar')-%>
+
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Users</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
+              <li class="breadcrumb-item active">Users</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header text-center">
+                <a href="users/create" class="btn bg-dark font-weight-bold"><i class="fa fa-plus-circle"></i>&nbsp;&nbsp;Add New</a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <div id="status" data-status="<%= status %>"></div>
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <% if(users){ %>
+                        <% users.forEach(function(row,i){ %>
+                            <tr id="delete-<%= row._id %>">
+                                <td width="10"><b><%= i+1 %></b></td>
+                                <td><%= row.name %></td>
+                                <td><%= row.surname %></td>
+                                <td><span class="badge bg-olive"><%= row.username %></span></td>
+                                <td><%= row.email %></td>
+                                <td><span class="badge bg-danger"><%= row.role %></span></td>
+                                <td width="10">
+                                    <div class="btn-group">
+                                        <a href="/admin/users/<%= row._id %>" title="Show" type="button" class="btn btn-default text-dark"><i class="fa fa-eye"></i></a>
+                                        <a href="/admin/users/<%= row._id %>/edit" title="Edit" type="button" class="btn btn-default text-olive"><i class="fa fa-edit"></i></a>
+                                        <a href="javascript:;" data-id="<%= row._id %>" title="Delete" type="button" class="btn btn-default text-danger deleteBtn"><i class="fa fa-trash"></i></a>
+                                      </div>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else{ %>
+                        <tr>
+                            <td colspan="5" class="text-center">No Data</td>
+                        </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<%- include('../partials/footer')-%>
+<script>
+  $(()=>{
+      $('.deleteBtn').on('click',function(){
+          const id = $(this).data('id');
+          removeRow(id,'/admin/users/');
+      });
+      let status = $('#status').data('status');
+      checkStatus(status);
+    });
+</script>

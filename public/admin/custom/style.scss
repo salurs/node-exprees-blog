@@ -1,0 +1,27 @@
+.content-header{
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    margin-bottom: 30px;
+}
+.breadcrumb-item a{
+    color: #222;
+    &:hover{
+        color: #000;
+    }
+}
+.pagination{
+    .page-item.active{
+        .page-link{
+            background-color: #222;
+            border-color: #222;  
+        }
+    }
+    .page-link{
+        color: #222;
+        &:focus{
+            box-shadow: none; 
+        }
+    }
+}
+.nav-item.has-treeview.menu-open{
+    background: rgba(0,0,0,.15)
+}
